@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Buttons */
+.btn { @apply inline-flex items-center gap-2 px-5 py-3 rounded-2xl shadow-soft font-medium hover:opacity-90 transition; }
+.btn-primary { @apply bg-primary text-white; }
+.btn-outline { @apply border border-primary text-primary hover:bg-primary/10; }
+
+/* Cards & Sections */
+.card { @apply bg-light text-slate-800 border border-line rounded-2xl p-6 shadow-soft; }
+.section { @apply max-w-6xl mx-auto px-4 md:px-6 py-12; }
+
+/* Brand utilities */
+.brand-border { @apply border-line; }
+.brand-text { @apply text-gray; }
+.brand-link { @apply text-gray hover:text-primary; }
+.brand-accent { @apply bg-gradient-to-r from-primary via-accent to-primary; }
+.brand-chip { @apply inline-flex items-center px-3 py-1 rounded-xl bg-accent/10 text-gray border border-line; }
