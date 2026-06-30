@@ -65,4 +65,3 @@
 .brand-link { @apply text-gray hover:text-primary; }
 .brand-accent { @apply bg-gradient-to-r from-primary via-accent to-primary; }
 .brand-chip { @apply inline-flex items-center px-3 py-1 rounded-xl bg-accent/10 text-gray border border-line; }
->>>>>>> dee18ed8b9ae3064845e1b6b013169e740f619ef
