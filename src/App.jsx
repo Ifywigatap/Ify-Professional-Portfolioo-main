@@ -47,7 +47,11 @@ function MobileMenu() {
 
       {open && (
         <div
+<<<<<<< HEAD
           className="fixed inset-0 z-[60] flex justify-end"
+=======
+          className="fixed inset-0 z-[60] flex"
+>>>>>>> dee18ed8b9ae3064845e1b6b013169e740f619ef
           style={{
             backgroundImage: "url('/big techz.jpeg')",
             backgroundSize: 'cover',
@@ -56,11 +60,19 @@ function MobileMenu() {
           }}
         >
           {/* Clickable overlay to close */}
+<<<<<<< HEAD
           <div className="absolute inset-0 bg-primary/30" onClick={() => setOpen(false)} />
 
           {/* Slide-in panel */}
           <aside className="relative z-20 w-64 h-full border-l brand-border shadow-soft p-6 flex flex-col gap-4 bg-purple" aria-label="Mobile navigation">
             <div className="flex items-center justify-between mb-4">
+=======
+          <div className="absolute inset-50 bg-primary/30" onClick={() => setOpen(false)} />
+
+          {/* Slide-in panel */}
+          <aside className="relative z-20 w-20 h-full border-l brand-border shadow-soft p-1 flex flex-col gap-1 bg-purple" aria-label="Mobile navigation">
+            <div className="flex items-center justify-between mb-1">
+>>>>>>> dee18ed8b9ae3064845e1b6b013169e740f619ef
               <div className="text-lg font-semibold">Menu</div>
               <button aria-label="Close menu" onClick={() => setOpen(false)} className="p-2 rounded-xl hover:bg-white/10">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden>
@@ -69,6 +81,7 @@ function MobileMenu() {
               </button>
             </div>
             <nav className="flex flex-col text-lg" aria-label="Primary">
+<<<<<<< HEAD
               {NAV_ITEMS.map((item, index) => (
                 <NavLink
                   key={item.to}
@@ -83,6 +96,14 @@ function MobileMenu() {
                   {item.label}
                 </NavLink>
               ))}
+=======
+            <a class="py-1 hover:text bg-indigo-600" href="/about">About</a>
+            <a aria-current="page" class="py-1 hover:text bg-indigo-800 active" href="/projects">Projects</a>
+            <a class="py-1 hover:text bg-indigo-600" href="/services">Services</a><a class="py-1 hover:text bg-indigo-800" href="/blog">Blog</a>
+            <a class="py-1 hover:text bg-indigo-600" href="/learn">Learn</a><a class="py-1 hover:text bg-indigo-800" href="/enroll">Enroll</a>
+            <a class="py-1 hover:text bg-indigo-600" href="/pricing">Pricing</a><a class="py-1 hover:text bg-indigo-800" href="/testimonials">Testimonials</a>
+            <a class="py-1 hover:text bg-indigo-600" href="/resume">Resume</a><a class="py-1 hover:text bg-indigo-800" href="/contact">Contact</a>
+>>>>>>> dee18ed8b9ae3064845e1b6b013169e740f619ef
             </nav>
           </aside>
         </div>
@@ -112,11 +133,15 @@ export default function App() {
 
             <div className="hidden md:flex items-center gap-4 brand-link">
               {NAV_ITEMS.map((item) => (
+<<<<<<< HEAD
                 <NavLink
                   key={item.to}
                   to={item.to}
                   className={({ isActive }) => `hover:text-primary transition-colors ${isActive ? 'text-primary font-semibold' : ''}`}
                 >
+=======
+                <NavLink key={item.to} to={item.to} className="hover:text-primary">
+>>>>>>> dee18ed8b9ae3064845e1b6b013169e740f619ef
                   {item.label}
                 </NavLink>
               ))}
