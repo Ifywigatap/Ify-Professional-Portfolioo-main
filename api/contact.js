@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 const nodemailer = require('nodemailer');
 
 export default async function handler(req, res) {
@@ -50,7 +50,6 @@ export default async function handler(req, res) {
     return res.status(500).json({ error: 'An error occurred while sending the message.' });
   }
 }
-=======
 import nodemailer from 'nodemailer';
 export default async function handler(req, res) {
   if (req.method !== 'POST') return res.status(405).json({ ok: false, error: 'Method not allowed' });
@@ -69,4 +68,4 @@ export default async function handler(req, res) {
     return res.status(200).json({ ok:true, id: info.messageId });
   }catch(e){ return res.status(500).json({ ok:false, error: e.message||'Email failed' }) }
 }
->>>>>>> dee18ed8b9ae3064845e1b6b013169e740f619ef
+

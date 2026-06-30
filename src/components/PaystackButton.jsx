@@ -1,28 +1,44 @@
-<<<<<<< HEAD
+
 import Button from './Button';
 
-export default function PaystackButton({ email = '', amount = 100000, reference, disabled = false }) {
-=======
-export default function PaystackButton({ email = '', amount = 100000, reference }) {
->>>>>>> dee18ed8b9ae3064845e1b6b013169e740f619ef
+/**
+ * A component that renders a button to trigger the Paystack payment popup.
+ */
+export default function PaystackButton({
+  email = '',
+  amount = 0,
+  reference,
+  disabled = false,
+  onSuccess,
+  onClose,
+  children = 'Pay Now',
+}) {
   const handlePay = () => {
-    const handler = window.PaystackPop && window.PaystackPop.setup({
-      key: import.meta.env.VITE_PAYSTACK_PUBLIC_KEY || 'pk_live_69f04a2dfeb908b3c45e239639db4c9783aa46b9',
+    if (disabled || amount <= 0) return;
+
+    const paystackKey = import.meta.env.VITE_PAYSTACK_PUBLIC_KEY;
+    if (!paystackKey) {
+      console.error('Paystack public key is not set. Please set VITE_PAYSTACK_PUBLIC_KEY in your .env file.');
+      alert('Payment service is currently unavailable. Please contact support.');
+      return;
+    }
+
+    if (!window.PaystackPop) {
+      alert('Payment gateway is not available. Please check your internet connection and try again.');
+      return;
+    }
+
+    const handler = window.PaystackPop.setup({
+      key: paystackKey,
       email,
       amount: Math.round(amount) * 100,
       currency: 'NGN',
       ref: reference || ('IFY-' + Date.now()),
-      callback: function (response) {
-        alert('Payment complete! Ref: ' + response.reference);
-      },
-      onClose: function () {}
+      callback: onSuccess || ((response) => console.log('Payment successful:', response)),
+      onClose: onClose || (() => console.log('Payment popup closed.')),
     });
-    if (handler) handler.openIframe();
-    else alert('Paystack script not loaded yet. Try again in a second.');
+    handler.openIframe();
   }
-<<<<<<< HEAD
-  return <Button onClick={handlePay} disabled={disabled}>Pay with Paystack</Button>
-=======
-  return <button onClick={handlePay} className="btn btn-primary">Pay with Paystack</button>
->>>>>>> dee18ed8b9ae3064845e1b6b013169e740f619ef
+
+  return <Button onClick={handlePay} disabled={disabled || amount <= 0}>{children}</Button>;
 }

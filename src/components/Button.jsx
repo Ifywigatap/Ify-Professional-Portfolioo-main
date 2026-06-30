@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import React from 'react';
 
 const MotionLink = motion(Link);
 const MotionA = motion.a;
@@ -13,15 +14,16 @@ const buttonVariants = {
 /**
  * A reusable Button component with motion effects.
  * It can render as a button, a react-router Link, or a standard anchor tag.
+ * It also forwards refs to the underlying DOM element and handles external links securely.
  */
-export default function Button({
+const Button = React.forwardRef(function Button({
   children,
   to,
   href,
   variant = 'primary',
   className = '',
   ...props
-}) {
+}, ref) {
   const classes = `btn ${buttonVariants[variant] || ''} ${className}`;
 
   const motionProps = {
@@ -32,13 +34,18 @@ export default function Button({
     ...props,
   };
 
+  const isExternal = href && /^(https?:\/\/|mailto:)/.test(href);
+
   if (to) {
-    return <MotionLink to={to} {...motionProps}>{children}</MotionLink>;
+    return <MotionLink ref={ref} to={to} {...motionProps}>{children}</MotionLink>;
   }
 
   if (href) {
-    return <MotionA href={href} {...motionProps}>{children}</MotionA>;
+    const externalProps = isExternal ? { target: '_blank', rel: 'noopener noreferrer' } : {};
+    return <MotionA ref={ref} href={href} {...motionProps} {...externalProps}>{children}</MotionA>;
   }
 
-  return <MotionButton {...motionProps}>{children}</MotionButton>;
-}
+  return <MotionButton ref={ref} {...motionProps}>{children}</MotionButton>;
+});
+
+export default Button;

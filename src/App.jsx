@@ -47,11 +47,7 @@ function MobileMenu() {
 
       {open && (
         <div
-<<<<<<< HEAD
-          className="fixed inset-0 z-[60] flex justify-end"
-=======
           className="fixed inset-0 z-[60] flex"
->>>>>>> dee18ed8b9ae3064845e1b6b013169e740f619ef
           style={{
             backgroundImage: "url('/big techz.jpeg')",
             backgroundSize: 'cover',
@@ -60,19 +56,11 @@ function MobileMenu() {
           }}
         >
           {/* Clickable overlay to close */}
-<<<<<<< HEAD
-          <div className="absolute inset-0 bg-primary/30" onClick={() => setOpen(false)} />
+          <div className="absolute inset-0 bg-primary/30" onClick={() => setOpen(false)}></div>
 
           {/* Slide-in panel */}
-          <aside className="relative z-20 w-64 h-full border-l brand-border shadow-soft p-6 flex flex-col gap-4 bg-purple" aria-label="Mobile navigation">
+          <aside className="relative z-20 w-64 h-full border-l brand-border shadow-soft p-6 flex flex-col gap-4 bg-dark/90" aria-label="Mobile navigation">
             <div className="flex items-center justify-between mb-4">
-=======
-          <div className="absolute inset-50 bg-primary/30" onClick={() => setOpen(false)} />
-
-          {/* Slide-in panel */}
-          <aside className="relative z-20 w-20 h-full border-l brand-border shadow-soft p-1 flex flex-col gap-1 bg-purple" aria-label="Mobile navigation">
-            <div className="flex items-center justify-between mb-1">
->>>>>>> dee18ed8b9ae3064845e1b6b013169e740f619ef
               <div className="text-lg font-semibold">Menu</div>
               <button aria-label="Close menu" onClick={() => setOpen(false)} className="p-2 rounded-xl hover:bg-white/10">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden>
@@ -81,29 +69,20 @@ function MobileMenu() {
               </button>
             </div>
             <nav className="flex flex-col text-lg" aria-label="Primary">
-<<<<<<< HEAD
               {NAV_ITEMS.map((item, index) => (
                 <NavLink
                   key={item.to}
                   to={item.to}
                   onClick={() => setOpen(false)}
-                  className={({ isActive }) =>
-                    `py-2 px-4 rounded-md transition-colors ${
-                      isActive ? 'bg-primary font-semibold' : `${index % 2 === 0 ? 'bg-indigo-600/80' : 'bg-indigo-800/80'} hover:bg-primary/50`
-                    }`
-                  }
+                  className={({ isActive }) => `py-2 px-4 rounded-md transition-colors ${isActive
+                      ? 'bg-primary font-semibold'
+                      : `${index % 2 === 0 ? 'bg-indigo-600/80' : 'bg-indigo-800/80'
+                      } hover:bg-primary/50`
+                    }`}
                 >
                   {item.label}
                 </NavLink>
               ))}
-=======
-            <a class="py-1 hover:text bg-indigo-600" href="/about">About</a>
-            <a aria-current="page" class="py-1 hover:text bg-indigo-800 active" href="/projects">Projects</a>
-            <a class="py-1 hover:text bg-indigo-600" href="/services">Services</a><a class="py-1 hover:text bg-indigo-800" href="/blog">Blog</a>
-            <a class="py-1 hover:text bg-indigo-600" href="/learn">Learn</a><a class="py-1 hover:text bg-indigo-800" href="/enroll">Enroll</a>
-            <a class="py-1 hover:text bg-indigo-600" href="/pricing">Pricing</a><a class="py-1 hover:text bg-indigo-800" href="/testimonials">Testimonials</a>
-            <a class="py-1 hover:text bg-indigo-600" href="/resume">Resume</a><a class="py-1 hover:text bg-indigo-800" href="/contact">Contact</a>
->>>>>>> dee18ed8b9ae3064845e1b6b013169e740f619ef
             </nav>
           </aside>
         </div>
@@ -133,15 +112,11 @@ export default function App() {
 
             <div className="hidden md:flex items-center gap-4 brand-link">
               {NAV_ITEMS.map((item) => (
-<<<<<<< HEAD
                 <NavLink
                   key={item.to}
                   to={item.to}
                   className={({ isActive }) => `hover:text-primary transition-colors ${isActive ? 'text-primary font-semibold' : ''}`}
                 >
-=======
-                <NavLink key={item.to} to={item.to} className="hover:text-primary">
->>>>>>> dee18ed8b9ae3064845e1b6b013169e740f619ef
                   {item.label}
                 </NavLink>
               ))}
@@ -231,28 +206,19 @@ export default function App() {
           </div>
         </div>
 
-        <div className="section text-sm text-white pt-6 flex flex-col md:flex-row items-center justify-between gap-4">
-          <img src="/Ifylogo.png" alt="IFYWIGATECHZ Logo" className="h-14 w-12 rounded-sm object-cover" />
-          <p>IFYWIGATECHZ — unlocking potentials through technology and innovation</p>
-          <div className="font-semibold text-lg">IFYWIGATECHZ</div>
-          <img src="/replacelogo.jpeg" alt="IFYWIGATECHZ Logo" className="h-14 w-12 rounded-sm object-cover" />
-          <p>
-            Developer: <a href="https://wa.me/message/JKHFXN4MYKABJ1">Isu Ifeanyichukwu Oko</a>
-          </p>
-          <p>
+        <div className="mt-8 pt-8 border-t border-line/20 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <p className="text-sm text-slate-300 text-center sm:text-left">
             &copy; {new Date().getFullYear()} IFYWIGATECHZ Global Services. All rights reserved.
             <br />
             <span className="bg-indigo-500 px-2 py-0.5 rounded text-white">Business Reg: 8850471</span>
           </p>
-          <p>
-            <a className="brand-link" href="/privacy">
-              Privacy
-            </a>{' '}
-            •{' '}
-            <a className="brand-link" href="/terms">
-              Terms
-            </a>
-          </p>
+          <div className="text-center sm:text-right">
+            <p>
+              Developer: <a href="https://wa.me/message/JKHFXN4MYKABJ1" className="brand-link">Isu Ifeanyichukwu Oko</a>
+            </p>
+            <a className="brand-link" href="/privacy">Privacy</a> •{' '}
+            <a className="brand-link" href="/terms">Terms</a>
+          </div>
         </div>
       </footer>
     </div>
